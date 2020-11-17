@@ -10,3 +10,16 @@ Route::get('dashboard', [DashboardController::class, 'index'])
     ->breadcrumbs(function (Trail $trail) {
         $trail->push(__('Home'), route('admin.dashboard'));
     });
+
+
+// все салоны
+Route::get('salons/', function () {
+	$salons = DB::table('salons')->paginate(15);
+	// $salon = DB::table('salons')->where('urlKey', $key)->first()->toArray();
+	return view('salons',[ 'salons' => $salons]);
+});
+Route::get('addfirm', [DashboardController::class, 'addfirm'])
+    ->name('addfirm')
+    ->breadcrumbs(function (Trail $trail) {
+        $trail->push(__('Home'), route('admin.addfirm'));
+    });
