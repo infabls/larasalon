@@ -18,6 +18,7 @@
 
                     <x-slot name="body">
                      <div class="panel-body">
+                     @if (count($orders) > 0)
                       <table class="table table-striped task-table">
                         <!-- Заголовок таблицы -->
                         <thead>
@@ -41,10 +42,34 @@
                                <td class="table-text">
                                 <div>{{ $order->status }}</div>
                               </td> 
+
+                              <!-- действия с заявками -->
+                              <td class="table-text">
+                                    <form style='float:left' action="{{ url('orders/'.$order->id) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+
+                                    <button type="submit" class="btn btn-danger">
+                                      <i class="fa fa-trash"></i> Удалить
+                                    </button>
+                                  </form>
+                                   <form style='float:left' action="{{ url('orders/'.$order->id . '/change') }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
+
+                                    <button type="submit" class="btn btn-danger">
+                                      <i class="fa fa-pen"></i> Изменить
+                                    </button>
+                                  </form>
+                              </td> 
                             </tr>
                           @endforeach
+                          @else
+                          <p>У вас нет заявок. Хотите дать рекламу?</p>
+                          @endif
                         </tbody>
                       </table>
+                {!! $orders->render() !!}
                     </div>
                     </x-slot>
                 </x-frontend.card>

@@ -67,23 +67,41 @@ Route::get('orders', function () {
 
     // данные о заявках фирме
     $orders = DB::table('orders')->where('firm_id', '=', $salon->id)
-    ->paginate(15);
+    ->paginate(10);
     return view('frontend.pages.my-orders',[ 'orders' => $orders]);
 });
 
 
 // удаление заявки
-Route::delete('/orders/{order_id}', function (Orders $order_id) {
-    $id = Auth::id();
-    $salon = Salon::where('ownerId', '=', $id);
-    if ($orders->firm_id == $salon->id) {
-        $orders->delete();
-        return redirect('back')->with('status', 'Заявка была удалена');;
+Route::delete('/orders/{id}', function ($id) {
+    $user_id = Auth::id();
+    $salon = Salon::where('ownerId', '=', $user_id)->firstOrFail();
+    $order = Orders::findOrFail($id);
+    $firm_id = $order->firm_id;
+    if ($firm_id == $salon->id) {
+        $order->delete();
+        return back()->with('status', 'Заявка была удалена');;
     }
     else {
         return abort(401);
     }
 });    
 
+// изменение статуса заявки
+Route::put('orders/{id}/change', function ($id) {
+    $user_id = Auth::id();
+    $salon = Salon::where('ownerId', '=', $user_id)->firstOrFail();
+    $order = Orders::findOrFail($id);
+    $firm_id = $order->firm_id;
+    if ($firm_id == $salon->id) {
+        $order->status = 'Просмотрено';
+        $order->save();
+        return back()->with('status', 'Статус был изменен');
+    }
+    else {
+        return abort(401);
+    }
+    
+});
 
 

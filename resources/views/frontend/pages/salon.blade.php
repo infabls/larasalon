@@ -11,7 +11,7 @@
                         Данные о вашей фирме {{$salon->name}}
                     </x-slot>
                     <x-slot name="body">
-                        <a href="my-orders">Мои заявки</a>
+                        <a href="orders">Мои заявки</a>
                         <div class="links">
                         <h2>{{$salon['name']}}</h2>
                         <img src="https://zapis.kz/{{$salon['avatarUrl']}}" alt="">
