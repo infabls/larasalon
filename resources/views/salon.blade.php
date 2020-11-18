@@ -93,7 +93,11 @@
                     @endif
                 @endauth
             </div><!--top-right-->
-
+             @if(session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+              @endif
             <div class="content">
                 @include('includes.partials.messages')
 
@@ -111,6 +115,22 @@
                 <p>Номер: <a href="tel:{{$salon['phoneNumbers']}}">{{$salon['phoneNumbers']}}</a></p>
                 <p>Инстаграм: <a target="_blank" href="https://www.instagram.com/{{$salon['instagramProfile']}}/">{{$salon['instagramProfile']}}</a></p>
                 </div><!--links-->
+                <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('createOrder')}}">
+                       @csrf
+                        <div class="form-group">
+                            <h3>Оставить заявку</h3>
+                          <input  value="{{$salon->id}}" type="text" id="firm_id" name="firm_id" class="form-control" required="" hidden="">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Имя</label>
+                          <input  name="name" type="text" class="form-control" required="">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Номер телефона</label>
+                          <input  name="phone" type="tel" class="form-control" required="">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
                 <div id="disqus_thread"></div>
             </div><!--content-->
         </div><!--app-->

@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\TermsController;
+// use App\Http\Controllers\Frontend\Orders;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Tabuna\Breadcrumbs\Trail;
 use App\Models\Salon;
+use App\Models\Orders;
 
 
 /*
@@ -55,3 +57,33 @@ Route::post('editsalon2', function (Request $request) {
     $salon->save();
     return redirect('editsalon')->with('status', 'Страница была изменена');
 });
+
+// логика работы с заявками
+
+// список заявок
+Route::get('orders', function () {
+    $id = Auth::id();
+    $salon = Salon::where('ownerId', '=', $id)->firstOrFail();
+
+    // данные о заявках фирме
+    $orders = DB::table('orders')->where('firm_id', '=', $salon->id)
+    ->paginate(15);
+    return view('frontend.pages.my-orders',[ 'orders' => $orders]);
+});
+
+
+// удаление заявки
+Route::delete('/orders/{order_id}', function (Orders $order_id) {
+    $id = Auth::id();
+    $salon = Salon::where('ownerId', '=', $id);
+    if ($orders->firm_id == $salon->id) {
+        $orders->delete();
+        return redirect('back')->with('status', 'Заявка была удалена');;
+    }
+    else {
+        return abort(401);
+    }
+});    
+
+
+

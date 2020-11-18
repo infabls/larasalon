@@ -3,6 +3,9 @@
 use App\Http\Controllers\LocaleController;
 use App\Models\Salon;
 use App\Models\Categories;
+use App\Models\Orders;
+use Illuminate\Http\Request; 
+
 
 
 session()->put('city', 'almaty');
@@ -10,6 +13,17 @@ session()->put('city', 'almaty');
 Route::get('/city/{city_key}', function ($city_key) {
  	session()->put('city', $city_key);
 	return redirect()->back();
+});
+
+// создание заявки
+Route::post('createOrder', function (Request $request) {
+	$order = new Orders;
+	$order->firm_id = $request->firm_id;
+    $order->name = $request->name;
+    $order->status = 'На рассмотрении';
+    $order->phone = $request->phone;
+    $order->save();
+    return back()->with('status', 'Ваша заявка была отправлена');
 });
 
 // страница категории с городами
