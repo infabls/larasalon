@@ -64,17 +64,17 @@
                             <div class="room_type first">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <img src="img/gallery/hotel_list_1.jpg" class="img-fluid" alt="">
+                                        <img src="/img/gallery/hotel_list_1.jpg" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-md-8">
                                         <h4>Single Room</h4>
                                         <p>Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
                                         <ul class="hotel_facilities">
-                                            <li><img src="img/hotel_facilites_icon_2.svg" alt="">Single Bed</li>
-                                            <li><img src="img/hotel_facilites_icon_4.svg" alt="">Free Wifi</li>
-                                            <li><img src="img/hotel_facilites_icon_5.svg" alt="">Shower</li>
-                                            <li><img src="img/hotel_facilites_icon_7.svg" alt="">Air Condition</li>
-                                            <li><img src="img/hotel_facilites_icon_8.svg" alt="">Hairdryer</li>
+                                            <li><img src="/img/hotel_facilites_icon_2.svg" alt="">Single Bed</li>
+                                            <li><img src="/img/hotel_facilites_icon_4.svg" alt="">Free Wifi</li>
+                                            <li><img src="/img/hotel_facilites_icon_5.svg" alt="">Shower</li>
+                                            <li><img src="/img/hotel_facilites_icon_7.svg" alt="">Air Condition</li>
+                                            <li><img src="/img/hotel_facilites_icon_8.svg" alt="">Hairdryer</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -84,17 +84,17 @@
                             <div class="room_type alternate">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <img src="img/gallery/hotel_list_2.jpg" class="img-fluid" alt="">
+                                        <img src="/img/gallery/hotel_list_2.jpg" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-md-8">
                                         <h4>Double Room</h4>
                                         <p>Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
                                         <ul class="hotel_facilities">
-                                            <li><img src="img/hotel_facilites_icon_3.svg" alt="">Double Bed</li>
-                                            <li><img src="img/hotel_facilites_icon_4.svg" alt="">Free Wifi</li>
-                                            <li><img src="img/hotel_facilites_icon_6.svg" alt="">Bathtub</li>
-                                            <li><img src="img/hotel_facilites_icon_7.svg" alt="">Air Condition</li>
-                                            <li><img src="img/hotel_facilites_icon_8.svg" alt="">Hairdryer</li>
+                                            <li><img src="/img/hotel_facilites_icon_3.svg" alt="">Double Bed</li>
+                                            <li><img src="/img/hotel_facilites_icon_4.svg" alt="">Free Wifi</li>
+                                            <li><img src="/img/hotel_facilites_icon_6.svg" alt="">Bathtub</li>
+                                            <li><img src="/img/hotel_facilites_icon_7.svg" alt="">Air Condition</li>
+                                            <li><img src="/img/hotel_facilites_icon_8.svg" alt="">Hairdryer</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -104,18 +104,18 @@
                             <div class="room_type last">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <img src="img/gallery/hotel_list_3.jpg" class="img-fluid" alt="">
+                                        <img src="/img/gallery/hotel_list_3.jpg" class="img-fluid" alt="">
                                     </div>
                                     <div class="col-md-8">
                                         <h4>Suite Room</h4>
                                         <p>Sit an meis aliquam, cetero inermis vel ut. An sit illum euismod facilisis, tamquam vulputate pertinacia eum at.</p>
                                         <ul class="hotel_facilities">
-                                            <li><img src="img/hotel_facilites_icon_3.svg" alt="">King size Bed</li>
-                                            <li><img src="img/hotel_facilites_icon_4.svg" alt="">Free Wifi</li>
-                                            <li><img src="img/hotel_facilites_icon_6.svg" alt="">Bathtub</li>
-                                            <li><img src="img/hotel_facilites_icon_7.svg" alt="">Air Condition</li>
-                                            <li><img src="img/hotel_facilites_icon_9.svg" alt="">Swimming pool</li>
-                                            <li><img src="img/hotel_facilites_icon_3.svg" alt="">Hairdryer</li>
+                                            <li><img src="/img/hotel_facilites_icon_3.svg" alt="">King size Bed</li>
+                                            <li><img src="/img/hotel_facilites_icon_4.svg" alt="">Free Wifi</li>
+                                            <li><img src="/img/hotel_facilites_icon_6.svg" alt="">Bathtub</li>
+                                            <li><img src="/img/hotel_facilites_icon_7.svg" alt="">Air Condition</li>
+                                            <li><img src="/img/hotel_facilites_icon_9.svg" alt="">Swimming pool</li>
+                                            <li><img src="/img/hotel_facilites_icon_3.svg" alt="">Hairdryer</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -215,7 +215,7 @@
                             <div class="reviews-container">
 
                                 <div class="review-box clearfix">
-                                    <figure class="rev-thumb"><img src="img/avatar1.jpg" alt="">
+                                    <figure class="rev-thumb"><img src="/img/avatar1.jpg" alt="">
                                     </figure>
                                     <div class="rev-content">
                                         <div class="rating">
@@ -233,7 +233,7 @@
                                 </div>
                                 <!-- /review-box -->
                                 <div class="review-box clearfix">
-                                    <figure class="rev-thumb"><img src="img/avatar2.jpg" alt="">
+                                    <figure class="rev-thumb"><img src="/img/avatar2.jpg" alt="">
                                     </figure>
                                     <div class="rev-content">
                                         <div class="rating">
@@ -251,7 +251,7 @@
                                 </div>
                                 <!-- /review-box -->
                                 <div class="review-box clearfix">
-                                    <figure class="rev-thumb"><img src="img/avatar3.jpg" alt="">
+                                    <figure class="rev-thumb"><img src="/img/avatar3.jpg" alt="">
                                     </figure>
                                     <div class="rev-content">
                                         <div class="rating">

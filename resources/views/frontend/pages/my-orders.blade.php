@@ -3,11 +3,7 @@
 @section('title', __('Terms & Conditions'))
 
 @section('content')
- @if(session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-  @endif
+
     <div class="container py-4">
         <div class="row justify-content-center">
             <div class="col-md-12">
