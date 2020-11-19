@@ -1,160 +1,193 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ appName() }}</title>
-        <meta name="description" content="@yield('meta_description', appName())">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
-        @yield('meta')
+@extends('layouts.app')
 
-        @stack('before-styles')
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link href="{{ mix('css/frontend.css') }}" rel="stylesheet">
-        <style>
-            #map {
+@section('content')
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/vendors.css" rel="stylesheet">
 
-            }
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+<!-- YOUR CUSTOM CSS -->
+<link href="/css/custom.css" rel="stylesheet">
 
-            .full-height {
-                height: 100vh;
-            }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
 
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-        @stack('after-styles')
-
-        @include('includes.partials.ga')
-    </head>
-    <body>
-        @include('includes.partials.read-only')
-        @include('includes.partials.logged-in-as')
-        <div id="app" class="flex-center position-ref full-height">
-            <div class="top-right links">
-                <!-- выбор города -->
-                <ul>
-                    <h3>Ваш город - {{$value}}</h3>
-                    <li><a href="/city/astana">Астана</a></li>
-                    <li><a href="/city/almaty">Алматы</a></li>
-                    <li><a href="/city/oskemen">Усть-Каменогорск</a></li>
+<div class="content">
+    @include('includes.partials.messages')
+            <div class="filters_listing version_2  sticky_horizontal">
+            <div class="container">
+                <ul class="clearfix">
+                    <li>
+                        <div class="switch-field">
+                            <input type="radio" id="all" name="listing_filter" value="all" checked>
+                            <label for="all">All</label>
+                            <input type="radio" id="popular" name="listing_filter" value="popular">
+                            <label for="popular">Popular</label>
+                            <input type="radio" id="latest" name="listing_filter" value="latest">
+                            <label for="latest">Latest</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="layout_view">
+                            <a href="#0" class="active"><i class="icon-th"></i></a>
+                            <a href="listing-2.html"><i class="icon-th-list"></i></a>
+                            <a href="list-map.html"><i class="icon-map"></i></a>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Hide map" data-text-original="View on map">View on map</a>
+                    </li>
                 </ul>
-                @auth
-                    @if ($logged_in_user->isUser())
-                        <a href="{{ route('frontend.user.dashboard') }}">@lang('Dashboard')</a>
-                    @endif
+            </div>
+            <!-- /container -->
+        </div>
+                <div class="collapse" id="collapseMap">
+            <div id="map" class="map"></div>
+        </div>
+<h1>Это категория {{$cat['name']}}</h1>
 
-                    <a href="{{ route('frontend.user.account') }}">@lang('Account')</a>
-                @else
-                    <a href="{{ route('frontend.auth.login') }}">@lang('Login')</a>
-
-                    @if (config('boilerplate.access.user.registration'))
-                        <a href="{{ route('frontend.auth.register') }}">@lang('Register')</a>
-                    @endif
-                @endauth
-            </div><!--top-right-->
-
-            <div class="content">
-                @include('includes.partials.messages')
-
-                <div class="title m-b-md">
-                    <example-component></example-component>
-                </div><!--title-->
-
-                <div class="links">
-                    <h1>Это категория {{$cat['name']}}</h1>
-                    <ul>
+    <div class="row">
+        <aside class="col-lg-3" id="sidebar">
+            <div id="filters_col">
+                <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt">Filters </a>
+                <div class="collapse show" id="collapseFilters">
+                    <div class="filter_type">
+                        <h6>Category</h6>
                         <ul>
-                        @foreach ($salons as $salon)
-                        <p><a href="/salon/{{$salon->urlKey}}">Это салон {{ $salon->name }}</a></p>
-                        @endforeach
-                        </ul>    
-                    {!! $salons->render() !!}
-                        
-                       
-                   </ul>    
-                </div><!--links-->
-                        <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
-        <div id="map" style="width:500px; height:400px"></div>
-        <script type="text/javascript">
-               var map;
-                DG.then(function () {
-                    map = DG.map('map', {
-                        center: [{{$city->latitude}}, {{$city->longitude}}],
-                        zoom: 11            
-                    });
+                            <li>
+                                <label class="container_check">Restaurants <small>43</small>
+                                  <input type="checkbox">
+                                  <span class="checkmark"></span>
+                              </label>
+                          </li>
+                          <li>
+                            <label class="container_check">Shops <small>33</small>
+                              <input type="checkbox">
+                              <span class="checkmark"></span>
+                          </label>
+                      </li>
+                      <li>
+                        <label class="container_check">Bars <small>12</small>
+                          <input type="checkbox">
+                          <span class="checkmark"></span>
+                      </label>
+                  </li>
+                  <li>
+                    <label class="container_check">Events <small>44</small>
+                      <input type="checkbox">
+                      <span class="checkmark"></span>
+                  </label>
+              </li>
+          </ul>
+      </div>
+      <div class="filter_type">
+        <h6>Distance</h6>
+        <div class="distance"> Radius around selected destination <span></span> km</div>
+        <input type="range" min="10" max="100" step="10" value="30" data-orientation="horizontal">
+    </div>
+    <div class="filter_type">
+        <h6>Rating</h6>
+        <ul>
+            <li>
+                <label class="container_check">Superb 9+ <small>34</small>
+                  <input type="checkbox">
+                  <span class="checkmark"></span>
+              </label>
+          </li>
+          <li>
+            <label class="container_check">Very Good 8+ <small>21</small>
+              <input type="checkbox">
+              <span class="checkmark"></span>
+          </label>
+      </li>
+      <li>
+        <label class="container_check">Good 7+ <small>15</small>
+          <input type="checkbox">
+          <span class="checkmark"></span>
+      </label>
+  </li>
+  <li>
+    <label class="container_check">Pleasant 6+ <small>34</small>
+      <input type="checkbox">
+      <span class="checkmark"></span>
+  </label>
+</li>
+</ul>
+</div>
+</div>
+<!--/collapse -->
+</div>
+<!--/filters col-->
+</aside>
+<!-- /aside -->
 
-                    @foreach ($salons as $salon)
-                         DG.marker([{{$salon->markerY}}, {{$salon->markerX}}]).addTo(map).bindPopup('<a target="_blank" href="/salon/{{$salon->urlKey}}">{{$salon->name}}</a>');                    var popup = DG.popup()
-                    @endforeach
-                        .setLatLng(latlng)
-                        .setContent('')
-                        .openOn(map);
-                });
-            </script>
-            </div><!--content-->
-        </div><!--app-->
-        <div id="cats">
-            <h3>Категории</h3>
+<div class="col-lg-9">
+    <div class="row">
+
+      @foreach ($salons as $salon)
+
+
+
+
+
+
+
+      <div class="col-md-6">
+        <div class="strip grid">
+            <figure>
+                <a href="#0" class="wish_bt"></a>
+                <a href="/salon/{{$salon->urlKey}}"><img src="https://zapis.kz/{{$salon->avatarUrl}}" class="img-fluid" alt="">
+                    <div class="read_more"><span>Перейти</span></div>
+                </a>
+                <small>{{ $salon->cityName }}</small>
+            </figure>
+            <div class="wrapper">
+                <h3><a href="detail-restaurant.html">{{ $salon->name }}</a></h3>
+                <small>{{ $salon->address }}</small>
+                <a class="address" href="https://www.google.com/maps/dir//Assistance+%E2%80%93+H%C3%B4pitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/data=!4m15!1m6!3m5!1s0x47e66e1de36f4147:0xb6615b4092e0351f!2sAssistance+Publique+-+H%C3%B4pitaux+de+Paris+(AP-HP)+-+Si%C3%A8ge!8m2!3d48.8568376!4d2.3504305!4m7!1m0!1m5!1m1!1s0x47e67031f8c20147:0xa6a9af76b1e2d899!2m2!1d2.3504327!2d48.8568361">Get directions</a>
+            </div>
             <ul>
-                <li><a href="/{{$value}}/category/parikmaherskie-uslugi">Парикмахерские услуги</a></li>
-                <li><a href="/{{$value}}/category/nogtevoi-servis">Ногти</a></li>
-                <li><a href="/{{$value}}/category/uhod-za-telom">Уход за телом</a></li>
-                <li><a href="/{{$value}}/category/makiyazh">Макияж</a></li>
-                <li><a href="/{{$value}}/category/udalenie-volos">Удаление волос</a></li>
-                <li><a href="/{{$value}}/category/kosmetologiya">Косметология</a></li>
-                <li><a href="/{{$value}}/category/brovi">Брови</a></li>
-                <li><a href="/{{$value}}/category/resnitsy">Ресницы</a></li>
+                <li><span class="loc_open">Сейчас открыто</span></li>
+
+                {{-- проверка на наличие отзывов --}}
+                @if ($salon->reviewCount > 0)
+                <li>
+                    <div class="score"><span>Superb<em>{{ $salon->reviewCount }} Отзывов</em></span><strong>{{ $salon->averageRating }}</strong></div>
+                </li>
+                @else
+                <li></li>
+                @endif
             </ul>
         </div>
-        @stack('before-scripts')
-        <script src="{{ mix('js/manifest.js') }}"></script>
-        <script src="{{ mix('js/vendor.js') }}"></script>
-        <script src="{{ mix('js/frontend.js') }}"></script>
-        @stack('after-scripts')
-    </body>
-</html>
+    </div>
+
+
+    @endforeach
+</div>
+
+{!! $salons->render() !!}
+</div>
+</div>
+
+
+<script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+
+<script type="text/javascript">
+   var map;
+   DG.then(function () {
+    map = DG.map('map', {
+        center: [{{$city->latitude}}, {{$city->longitude}}],
+        zoom: 11            
+    });
+
+    @foreach ($salons as $salon)
+    DG.marker([{{$salon->markerY}}, {{$salon->markerX}}]).addTo(map).bindPopup('<a target="_blank" href="/salon/{{$salon->urlKey}}">{{$salon->name}}</a>');                    var popup = DG.popup()
+    @endforeach
+    .setLatLng(latlng)
+    .setContent('')
+    .openOn(map);
+});
+</script>
+</div><!--content-->
+</div><!--app-->
+
+
+@endsection
