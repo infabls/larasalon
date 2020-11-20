@@ -9,6 +9,21 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
+    <style>
+        .hero_single.version_2 {
+            background: #222 url(https://zapis.kz/static/img/client_pages/search/categories/category-1.png) center center no-repeat;
+            background-size: cover;
+        }
+        @media (max-width: 767px) {
+            #toTop {
+                display: block !important;
+            }
+        }
+        .header_in {
+                position: fixed !important;
+                box-shadow: 0px 2px 5px 2px #0000007a;
+            }
+    </style>
     <main>
         <section class="hero_single version_2">
             <div class="wrapper">
@@ -19,29 +34,31 @@
                         <div class="row no-gutters custom-search-input-2">
                             <div class="col-lg-4">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="What are you looking for...">
+                                    <input class="form-control" type="text" placeholder="Чот вы ищете?">
                                     <i class="icon_search"></i>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Where">
+                                    <input class="form-control" type="text" placeholder="Город">
                                     <i class="icon_pin_alt"></i>
                                 </div>
                             </div>
                             <div class="col-lg-3">
                                 <select class="wide">
-                                    <option>All Categories</option> 
-                                    <option>Shops</option>
-                                    <option>Hotels</option>
-                                    <option>Restaurants</option>
-                                    <option>Bars</option>
-                                    <option>Events</option>
-                                    <option>Fitness</option>
+                                    <option>Все категории</option> 
+                                    <option>Парикмахерские</option>
+                                    <option>Ногти</option>
+                                    <option>Уход за телом</option>
+                                    <option>Макияж</option>
+                                    <option>Удаление волос</option>
+                                    <option>Косметология</option>
+                                    <option>Брови</option>
+                                    <option>Ресницы</option>
                                 </select>
                             </div>
                             <div class="col-lg-2">
-                                <input type="submit" value="Search">
+                                <input type="submit" value="Найти">
                             </div>
                         </div>
                         <!-- /row -->

@@ -29,33 +29,35 @@
         <div class="container margin_60_35">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <h3 data-target="#collapse_ft_1">Quick Links</h3>
+                    <h3 data-target="#collapse_ft_1">Быстрые ссылки</h3>
                     <div class="collapse dont-collapse-sm" id="collapse_ft_1">
                         <ul class="links">
-                            <li><a href="#0">About us</a></li>
-                            <li><a href="#0">Faq</a></li>
-                            <li><a href="#0">Help</a></li>
-                            <li><a href="#0">My account</a></li>
-                            <li><a href="#0">Create account</a></li>
-                            <li><a href="#0">Contacts</a></li>
+                            <li><a href="#0">Добавить компанию</a></li>
+                            <li><a href="#0">Рекламодателям</a></li>
+                            <li><a href="#0">Помощь</a></li>
+                            <li><a href="#0">Мой аккаунт</a></li>
+                            <li><a href="#0">Создать аккаунт</a></li>
+                            <li><a href="#0">Контакты</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <h3 data-target="#collapse_ft_2">Categories</h3>
+                    <h3 data-target="#collapse_ft_2">Категории</h3>
                     <div class="collapse dont-collapse-sm" id="collapse_ft_2">
                         <ul class="links">
-                            <li><a href="#0">Shops</a></li>
-                            <li><a href="#0">Hotels</a></li>
-                            <li><a href="#0">Restaurants</a></li>
-                            <li><a href="#0">Bars</a></li>
-                            <li><a href="#0">Events</a></li>
-                            <li><a href="#0">Fitness</a></li>
+                            <li><a href="/{{$value}}/category/parikmaherskie-uslugi">Парикмахерские услуги</a></li>
+                            <li><a href="/{{$value}}/category/nogtevoi-servis">Ногти</a></li>
+                            <li><a href="/{{$value}}/category/uhod-za-telom">Уход за телом</a></li>
+                            <li><a href="/{{$value}}/category/makiyazh">Макияж</a></li>
+                            <li><a href="/{{$value}}/category/udalenie-volos">Удаление волос</a></li>
+                            <li><a href="/{{$value}}/category/kosmetologiya">Косметология</a></li>
+                            <li><a href="/{{$value}}/category/brovi">Брови</a></li>
+                            <li><a href="/{{$value}}/category/resnitsy">Ресницы</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <h3 data-target="#collapse_ft_3">Contacts</h3>
+                    <h3 data-target="#collapse_ft_3">Контакты</h3>
                     <div class="collapse dont-collapse-sm" id="collapse_ft_3">
                         <ul class="contacts">
                             <li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
@@ -65,7 +67,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
-                    <h3 data-target="#collapse_ft_4">Keep in touch</h3>
+                    <h3 data-target="#collapse_ft_4">Подписывайтесь на рассылку!</h3>
                     <div class="collapse dont-collapse-sm" id="collapse_ft_4">
                         <div id="newsletter">
                             <div id="message-newsletter"></div>
@@ -77,7 +79,7 @@
                             </form>
                         </div>
                         <div class="follow_us">
-                            <h5>Follow Us</h5>
+                            <h5>Мы в соц сетях</h5>
                             <ul>
                                 <li><a href="#0"><i class="ti-facebook"></i></a></li>
                                 <li><a href="#0"><i class="ti-twitter-alt"></i></a></li>
@@ -117,9 +119,9 @@
                 </div>
                 <div class="col-lg-6">
                     <ul id="additional_links">
-                        <li><a href="#0">Terms and conditions</a></li>
-                        <li><a href="#0">Privacy</a></li>
-                        <li><span>© 2020 Sparker</span></li>
+                        <li><a href="#0">Правила использования</a></li>
+                        <li><a href="#0">Приватность</a></li>
+                        <li><span>© 2020 cute.kz</span></li>
                     </ul>
                 </div>
             </div>
