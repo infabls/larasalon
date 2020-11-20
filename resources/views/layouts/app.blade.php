@@ -9,12 +9,9 @@
     <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
     @yield('meta')
 
-    @stack('before-styles')
+
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="{{ mix('css/frontend.css') }}" rel="stylesheet">
-    <livewire:styles />
-    @stack('after-styles')
 
     @include('includes.partials.ga')
 </head>
@@ -130,8 +127,6 @@
     </footer>
     </div><!--app-->
     <div id="toTop"></div><!-- Back to top button -->
-    @stack('before-scripts')
-    <livewire:scripts />
         <!-- COMMON SCRIPTS -->
     <script src="/js/my/common_scripts.js"></script>
     <script src="/js/my/functions.js"></script>
@@ -142,6 +137,5 @@
     <script src="/js/my/markerclusterer.js"></script>
     <script src="/js/my/map.js"></script>
     <script src="/js/my/infobox.js"></script>
-    @stack('after-scripts')
 </body>
 </html>

@@ -3,11 +3,6 @@
 @section('title', __('Terms & Conditions'))
 
 @section('content')
- @if(session('status'))
-    <div class="alert alert-success">
-        {{ session('status') }}
-    </div>
-  @endif
     <div class="container py-4">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -17,7 +12,7 @@
                     </x-slot>
 
                     <x-slot name="body">
-                     <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('editsalon2')}}">
+                     <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{ url('editsalon/'.$salon->id) }}">
                        @csrf
                         <div class="form-group">
                           <label for="exampleInputEmail1">Name</label>

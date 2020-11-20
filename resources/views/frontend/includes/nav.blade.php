@@ -76,14 +76,23 @@
                                     :active="activeClass(Route::is('frontend.user.dashboard'))"
                                     :text="__('Dashboard')"
                                     class="dropdown-item"/>
-                            @endif
 
+                            @endif
                             <x-utils.link
                                 :href="route('frontend.user.account')"
                                 :active="activeClass(Route::is('frontend.user.account'))"
                                 :text="__('My Account')"
                                 class="dropdown-item" />
-
+                             <x-utils.link
+                                :href="route('frontend.home.orders')"
+                                :active="activeClass(Route::is('frontend.home.orders'))"
+                                :text="__('Мои заявки')"
+                                class="dropdown-item" />
+                            <x-utils.link
+                                :href="route('frontend.home.salons')"
+                                :active="activeClass(Route::is('frontend.home.salons'))"
+                                :text="__('Мои салоны')"
+                                class="dropdown-item" />
                             <x-utils.link
                                 :text="__('Logout')"
                                 class="dropdown-item"

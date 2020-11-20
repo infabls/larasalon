@@ -35,28 +35,62 @@ Route::get('terms', [TermsController::class, 'index'])
     });
 
 // вывод собственного салона
-Route::get('salon', function () {
+Route::get('salons', function () {
+    if (!Auth::user()) {
+        return abort(404);
+    }
 	$id = Auth::id();
-	$salon = Salon::where('ownerId', '=', $id)->firstOrFail();
-    return view('frontend.pages.salon',[ 'salon' => $salon]);
-});
+	$salons = Salon::where('ownerId', '=', $id)
+    ->paginate(10);
+    return view('frontend.pages.salons',[ 'salons' => $salons]);
+})->name('home.salons');
 
 
 // изменение инфы о салоне форма
-Route::get('editsalon', function () {
-    $id = Auth::id();
-    $salon = Salon::where('ownerId', '=', $id)->firstOrFail();
+Route::get('editsalon/{id}', function ($id) {
+    if (!Auth::user()) {
+        return abort(404);
+    }
+    $user_id = Auth::id();
+    $salon = Salon::where('id', '=', $id)->firstOrFail();
+    if ($user_id !== intval($salon->ownerId)) {
+        return abort(404);
+    }
     return view('frontend.pages.editsalon',[ 'salon' => $salon]);
 });
+
 // прием пост запроса на изменение данных
-Route::post('editsalon2', function (Request $request) {
-    $id = Auth::id();
-    $salon = Salon::where('ownerId', '=', $id)->firstOrFail();
+Route::post('editsalon/{id}', function ($id, Request $request) {
+    if (!Auth::user()) {
+        return abort(404);
+    }
+    $user_id = Auth::id();
+    $salon = Salon::where('id', '=', $id)->firstOrFail();
+    if ($user_id !== intval($salon->ownerId)) {
+        return abort(404);
+    }
     $salon->name = $request->name;
     $salon->phoneNumbers = $request->phoneNumbers;
     $salon->save();
-    return redirect('editsalon')->with('status', 'Страница была изменена');
+    return redirect("editsalon/$id")->with('status', 'Страница была изменена');
 });
+
+
+// удаление фирмы
+// Route::delete('editsalon/{id}', function ($id) {
+//     $user_id = Auth::id();
+//     $salon = Salon::where('ownerId', '=', $user_id)->firstOrFail();
+//     $order = Orders::findOrFail($id);
+//     $firm_id = $order->firm_id;
+//     if ($firm_id == $salon->id) {
+//         $order->delete();
+//         return back()->with('status', 'Заявка была удалена');;
+//     }
+//     else {
+//         return abort(401);
+//     }
+// });    
+
 
 // логика работы с заявками
 
@@ -64,12 +98,11 @@ Route::post('editsalon2', function (Request $request) {
 Route::get('orders', function () {
     $id = Auth::id();
     $salon = Salon::where('ownerId', '=', $id)->firstOrFail();
-
     // данные о заявках фирме
     $orders = DB::table('orders')->where('firm_id', '=', $salon->id)
     ->paginate(10);
     return view('frontend.pages.my-orders',[ 'orders' => $orders]);
-});
+})->name('home.orders');
 
 
 // удаление заявки

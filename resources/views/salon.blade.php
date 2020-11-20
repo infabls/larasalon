@@ -484,4 +484,5 @@
         }
     });
     </script>
+<script src="js/animated_canvas_min.js"></script>
 @endsection

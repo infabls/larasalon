@@ -15,8 +15,7 @@
                         @lang('You are logged in!')
                         <br>
                         <a href="/orders">Мои заявки</a><br>
-                        <a href="/salon">Мой салон</a><br>
-                        <a href="/editsalon">Изменить информацию о салоне</a><br>
+                        <a href="/salons">Мои салоны</a><br>
                     </x-slot>
                 </x-frontend.card>
             </div><!--col-md-10-->
