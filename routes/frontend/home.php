@@ -14,6 +14,7 @@ use App\Models\Orders;
  * Frontend Controllers
  * All route names are prefixed with 'frontend.'.
  */
+session()->put('city', 'almaty');
 Route::get('/', [HomeController::class, 'index'])
     ->name('index')
     ->breadcrumbs(function (Trail $trail) {

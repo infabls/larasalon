@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <x-frontend.card>
                     <x-slot name="header">
-                        Данные о ваших фирмах
+                        Данные о ваших фирмах. Всего фирм - {{$salons->total()}}. 
                     </x-slot>
                <x-slot name="body">
                      <div class="panel-body">
