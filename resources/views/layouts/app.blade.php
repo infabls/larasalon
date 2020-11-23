@@ -137,7 +137,7 @@
     <!-- Map -->
     <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script src="/js/my/markerclusterer.js"></script>
-    <script src="/js/my/map.js"></script>
+    <!-- <script src="/js/my/map.js"></script> -->
     <script src="/js/my/infobox.js"></script>
 </body>
 </html>

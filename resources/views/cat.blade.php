@@ -8,7 +8,11 @@
 <!-- YOUR CUSTOM CSS -->
 <link href="/css/custom.css" rel="stylesheet">
 
-
+<style>
+  .pagination span {
+    text-align: center !important;
+  }
+</style>
 
 <div class="content">
     @include('includes.partials.messages')
@@ -18,11 +22,11 @@
                     <li>
                         <div class="switch-field">
                             <input type="radio" id="all" name="listing_filter" value="all" checked>
-                            <label for="all">All</label>
+                            <label for="all">Все</label>
                             <input type="radio" id="popular" name="listing_filter" value="popular">
-                            <label for="popular">Popular</label>
+                            <label for="popular">С отзывами</label>
                             <input type="radio" id="latest" name="listing_filter" value="latest">
-                            <label for="latest">Latest</label>
+                            <label for="latest">Ближайшие</label>
                         </div>
                     </li>
                     <li>
@@ -33,7 +37,7 @@
                         </div>
                     </li>
                     <li>
-                        <a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Hide map" data-text-original="View on map">View on map</a>
+                        <a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Скрыть" data-text-original="На карте">На карте</a>
                     </li>
                 </ul>
             </div>
@@ -42,36 +46,37 @@
                 <div class="collapse" id="collapseMap">
             <div id="map" class="map"></div>
         </div>
-<h1>Это категория {{$cat['name']}}</h1>
+<h1>{{$cat['name']}}</h1>
 
     <div class="row">
         <aside class="col-lg-3" id="sidebar">
             <div id="filters_col">
-                <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt">Filters </a>
+                <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt">Фильтры </a>
                 <div class="collapse show" id="collapseFilters">
                     <div class="filter_type">
-                        <h6>Category</h6>
+                        <!-- <h6>ВАждн</h6> -->
+                        <br>
                         <ul>
                             <li>
-                                <label class="container_check">Restaurants <small>43</small>
+                                <label class="container_check">Работают сейчас <small>43</small>
                                   <input type="checkbox">
                                   <span class="checkmark"></span>
                               </label>
                           </li>
                           <li>
-                            <label class="container_check">Shops <small>33</small>
+                            <label class="container_check">Выезд на дом <small>33</small>
                               <input type="checkbox">
                               <span class="checkmark"></span>
                           </label>
                       </li>
                       <li>
-                        <label class="container_check">Bars <small>12</small>
+                        <label class="container_check">Каспи RED <small>12</small>
                           <input type="checkbox">
                           <span class="checkmark"></span>
                       </label>
                   </li>
                   <li>
-                    <label class="container_check">Events <small>44</small>
+                    <label class="container_check">Проверенные <small>44</small>
                       <input type="checkbox">
                       <span class="checkmark"></span>
                   </label>
@@ -79,40 +84,26 @@
           </ul>
       </div>
       <div class="filter_type">
-        <h6>Distance</h6>
-        <div class="distance"> Radius around selected destination <span></span> km</div>
+        <h6>Расстояние</h6>
+        <div class="distance">Компании рядом с вами в радиусе <span></span> км</div>
         <input type="range" min="10" max="100" step="10" value="30" data-orientation="horizontal">
     </div>
+    @if ($subcats->count() > 0)
     <div class="filter_type">
-        <h6>Rating</h6>
+        <h6>Подкатегории</h6>
+        
         <ul>
+          @foreach ($subcats as $subcat)
             <li>
-                <label class="container_check">Superb 9+ <small>34</small>
-                  <input type="checkbox">
-                  <span class="checkmark"></span>
-              </label>
-          </li>
-          <li>
-            <label class="container_check">Very Good 8+ <small>21</small>
-              <input type="checkbox">
-              <span class="checkmark"></span>
-          </label>
-      </li>
-      <li>
-        <label class="container_check">Good 7+ <small>15</small>
-          <input type="checkbox">
-          <span class="checkmark"></span>
-      </label>
-  </li>
-  <li>
-    <label class="container_check">Pleasant 6+ <small>34</small>
-      <input type="checkbox">
-      <span class="checkmark"></span>
-  </label>
-</li>
-</ul>
-</div>
-</div>
+              <a href="/{{$value}}/category/{{$subcat->cat_key}}">{{$subcat->name}}</a>
+            </li>
+          @endforeach
+        </ul>
+    </div>
+    @else
+    <p>У этой категории нет подкатегорий</p>
+    @endif
+  </div>
 <!--/collapse -->
 </div>
 <!--/filters col-->
@@ -122,13 +113,7 @@
 <div class="col-lg-9">
     <div class="row">
 
-      @foreach ($salons as $salon)
-
-
-
-
-
-
+      @foreach ($salons->sortBy('distance') as $salon)
 
       <div class="col-md-6">
         <div class="strip grid">
@@ -142,7 +127,8 @@
             <div class="wrapper">
                 <h3><a href="detail-restaurant.html">{{ $salon->name }}</a></h3>
                 <small>{{ $salon->address }}</small>
-                <a class="address" href="https://www.google.com/maps/dir//Assistance+%E2%80%93+H%C3%B4pitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/data=!4m15!1m6!3m5!1s0x47e66e1de36f4147:0xb6615b4092e0351f!2sAssistance+Publique+-+H%C3%B4pitaux+de+Paris+(AP-HP)+-+Si%C3%A8ge!8m2!3d48.8568376!4d2.3504305!4m7!1m0!1m5!1m1!1s0x47e67031f8c20147:0xa6a9af76b1e2d899!2m2!1d2.3504327!2d48.8568361">Get directions</a>
+<!--                 <a class="address" href="https://www.google.com/maps/dir//Assistance+%E2%80%93+H%C3%B4pitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/data=!4m15!1m6!3m5!1s0x47e66e1de36f4147:0xb6615b4092e0351f!2sAssistance+Publique+-+H%C3%B4pitaux+de+Paris+(AP-HP)+-+Si%C3%A8ge!8m2!3d48.8568376!4d2.3504305!4m7!1m0!1m5!1m1!1s0x47e67031f8c20147:0xa6a9af76b1e2d899!2m2!1d2.3504327!2d48.8568361">На расстоянии {{$salon->distance*1000}} метров от вас</a> -->
+                  <a href="dgis://2gis.ru/routeSearch/rsType/car/from/{{$userlng}},{{$userlat}}/to/{{$salon->markerX}},{{$salon->markerY}}" class="address">На расстоянии {{$salon->distance*1000}} метров от вас</a>
             </div>
             <ul>
                 <li><span class="loc_open">Сейчас открыто</span></li>
@@ -162,8 +148,8 @@
 
     @endforeach
 </div>
-
 {!! $salons->render() !!}
+
 </div>
 </div>
 

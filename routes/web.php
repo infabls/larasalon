@@ -38,17 +38,33 @@ Route::get('/{city_key}/category/{key}', function ($city_key, $key) {
 	// вытаскиваем данные о категории
 	$cat = Categories::where('cat_key', '=', $key)->first();
 
+	// подкатегории
+	$subcats = DB::table('categories')
+	->where('parentId', '=', $cat->id)
+	->get();
+	
 	// данные о салонах в категории
-	$salons = DB::table('salons')->where('cat_key', 'like', '%' . $cat->toArray()['name'] . '%')
+	$salons = Salon::where('cat_key', 'like', '%' . $cat->toArray()['name'] . '%')
 	->where('cityName', '=', $city->name)
 	->paginate(15);
 
 
+	// вывод ближайших
+        $userlat = '49.95677';
+        $userlng = '82.61413';
+        foreach ($salons as $salon) {
+          $salon->distance = getDistanceBetweenPointsNew($salon->markerY,$salon->markerX, $userlat, $userlng);
+        }
+
+        
 	return view('cat',[ 
 		'cat' => $cat,
 		'salons' => $salons,
 		'city' => $city,
-		'value' => $value
+		'value' => $value,
+		'subcats' => $subcats,
+		'userlat' => $userlat,
+		'userlng' => $userlng
 	]);
 });
 
@@ -93,3 +109,31 @@ Route::group(['as' => 'frontend.'], function () {
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
     includeRouteFiles(__DIR__.'/backend/');
 });
+
+
+/**
+ * Method to find the distance between 2 locations from its coordinates.
+ * 
+ * @param latitude1 LAT from point A
+ * @param longitude1 LNG from point A
+ * @param latitude2 LAT from point A
+ * @param longitude2 LNG from point A
+ * 
+ * @return Float Distance in Kilometers.
+ */
+function getDistanceBetweenPointsNew($latitude1, $longitude1, $latitude2, $longitude2, $unit = 'Mi') {
+    $theta = $longitude1 - $longitude2;
+    $distance = sin(deg2rad($latitude1)) * sin(deg2rad($latitude2)) + cos(deg2rad($latitude1)) * cos(deg2rad($latitude2)) * cos(deg2rad($theta));
+
+    $distance = acos($distance); 
+    $distance = rad2deg($distance); 
+    $distance = $distance * 60 * 1.1515;
+
+    switch($unit) 
+    { 
+        case 'Mi': break;
+        case 'Km' : $distance = $distance * 1.609344; 
+    }
+
+    return (round($distance,2)); 
+}
