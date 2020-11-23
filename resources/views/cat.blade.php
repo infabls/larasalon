@@ -26,7 +26,7 @@
                             <input type="radio" id="popular" name="listing_filter" value="popular">
                             <label for="popular">С отзывами</label>
                             <input type="radio" id="latest" name="listing_filter" value="latest">
-                            <label for="latest">Ближайшие</label>
+                            <label for="latest"><a href="/nearest">Ближайшие</a></label>
                         </div>
                     </li>
                     <li>

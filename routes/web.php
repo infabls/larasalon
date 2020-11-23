@@ -196,5 +196,5 @@ function getDistanceBetweenPointsNew($latitude1, $longitude1, $latitude2, $longi
         case 'Km' : $distance = $distance * 1.609344; 
     }
 
-    return (round($distance,2)); 
+    return (round($distance,3)); 
 }
