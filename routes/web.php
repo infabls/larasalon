@@ -46,12 +46,17 @@ Route::get('/{city_key}/category/{key}', function ($city_key, $key) {
 	// данные о салонах в категории
 	$salons = Salon::where('cat_key', 'like', '%' . $cat->toArray()['name'] . '%')
 	->where('cityName', '=', $city->name)
-	->paginate(15);
+	->paginate(12);
 
 
 	// вывод ближайших
-        $userlat = '49.95677';
-        $userlng = '82.61413';
+		// ука
+        // $userlat = '49.95677';
+        // $userlng = '82.61413';
+
+		// нурик
+		$userlat = '51.14942';
+		$userlng = '71.42658';
         foreach ($salons as $salon) {
           $salon->distance = getDistanceBetweenPointsNew($salon->markerY,$salon->markerX, $userlat, $userlng);
         }
@@ -63,6 +68,62 @@ Route::get('/{city_key}/category/{key}', function ($city_key, $key) {
 		'city' => $city,
 		'value' => $value,
 		'subcats' => $subcats,
+		'userlat' => $userlat,
+		'userlng' => $userlng
+	]);
+});
+
+
+// вывод ближайших компаний
+Route::get('/nearest', function () {
+
+	$value = session('city');
+	// вытаскиваем данные о городе
+	$city =  DB::table('cities')
+                ->where('city_key', '=', $value)
+                ->get()
+                ->first();
+
+    // вывод ближайших
+		// ука
+        // $userlat = '49.95677';
+        // $userlng = '82.61413';
+
+		// нурик
+		$userlat = '51.14942';
+		$userlng = '71.42658';
+
+	// данные о салонах в категории
+		$salons = DB::table('salons')
+			->selectRaw("*, 
+        (
+            (
+                (
+                    acos(
+                        sin((   $userlat * pi() / 180))
+                        *
+                        sin(( `markerY` * pi() / 180)) + cos(( $userlat * pi() /180 ))
+                        *
+                        cos(( `markerY` * pi() / 180)) * cos((( $userlng - `markerX`) * pi()/180)))
+                ) * 180/pi()
+            ) * 60 * 1.1515
+        )
+    as distance")->orderBy('distance')->paginate(15);
+
+
+
+
+
+	
+        foreach ($salons as $salon) {
+          $salon->distance = getDistanceBetweenPointsNew($salon->markerY,$salon->markerX, $userlat, $userlng);
+        }
+
+        
+	return view('nearest',[ 
+		'salons' => $salons,
+		'city' => $city,
+		'value' => $value,
 		'userlat' => $userlat,
 		'userlng' => $userlng
 	]);
