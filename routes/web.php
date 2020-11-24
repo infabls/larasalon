@@ -7,7 +7,6 @@ use App\Models\Orders;
 use Illuminate\Http\Request; 
 
 
-
 session()->put('city', 'almaty');
 // выбор города
 Route::get('/city/{city_key}', function ($city_key) {
@@ -75,8 +74,16 @@ Route::get('/{city_key}/category/{key}', function ($city_key, $key) {
 
 
 // вывод ближайших компаний
-Route::get('/nearest', function () {
-
+Route::get('/nearest', function (Request $request) {
+	
+	$userlat = $request->input('lat');
+	$userlng = $request->input('lng');
+	// если не установлены
+	if ($userlat == NULL OR $userlng == NULL) {
+		// нурик
+		$userlat = '51.14942';
+		$userlng = '71.42658';
+	}
 	$value = session('city');
 	// вытаскиваем данные о городе
 	$city =  DB::table('cities')
@@ -89,9 +96,7 @@ Route::get('/nearest', function () {
         // $userlat = '49.95677';
         // $userlng = '82.61413';
 
-		// нурик
-		$userlat = '51.14942';
-		$userlng = '71.42658';
+
 
 	// данные о салонах в категории
 		$salons = DB::table('salons')
