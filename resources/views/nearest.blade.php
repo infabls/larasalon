@@ -71,7 +71,7 @@
     const longitude = position.coords.longitude;
 
     status.textContent = '';
-    mapLink.href = `/nearest?lat=${latitude}?lng=${longitude}`;
+    mapLink.href = `/nearest?lat=${latitude}&lng=${longitude}`;
     mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
   }
 

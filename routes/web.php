@@ -84,7 +84,6 @@ Route::get('/nearest', function (Request $request) {
 		$userlat = '51.14942';
 		$userlng = '71.42658';
 	}
-	var_dump($userlat);
 	$value = session('city');
 	// вытаскиваем данные о городе
 	$city =  DB::table('cities')
