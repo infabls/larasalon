@@ -13,7 +13,7 @@
                     </x-slot>
 
                     <x-slot name="body">
-                     <div class="panel-body">
+                     <div class="panel-body" style="overflow-x: scroll;">
                      @if (count($orders) > 0)
                       <table class="table table-striped task-table">
                         <!-- Заголовок таблицы -->
