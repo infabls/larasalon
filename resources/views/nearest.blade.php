@@ -56,7 +56,7 @@
                         <!-- <h6>ВАждн</h6> -->
                           <button id = "find-me">Show my location</button><br/>
   <p id ="status"></p>
-  <a id ="map-link" target="_blank"></a>
+  <a id ="map-link"></a>
   <script>
     function geoFindMe() {
 
