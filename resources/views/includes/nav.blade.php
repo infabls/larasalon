@@ -36,61 +36,7 @@
                                     <li><a href="/{{$value}}/category/resnitsy">Ресницы</a></li>
                                 </ul>
                             </li>
-                            <li><span><a href="#0">Listings</a></span>
-                                <ul>
-                                    <li>
-                                        <span><a href="#0">Grid Layout</a></span>
-                                        <ul>
-                                            <li><a href="grid-listings-filterscol-search-aside.html">Sidebar+Search mobile 1</a></li>
-                                            <li><a href="grid-listings-filterstop-search-aside.html">Full+Search mobile 1</a></li>
-                                            <li><a href="grid-listings-filterscol.html">Sidebar+Search mobile 2</a></li>
-                                            <li><a href="grid-listings-filterstop.html">Full+Search mobile 2</a></li>
-                                            <li><a href="grid-listings-isotope.html">Full+Isotope filter</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span><a href="#0">Row Layout</a></span>
-                                        <ul>
-                                            <li><a href="row-listings-filterscol-search-aside.html">Sidebar+Search mobile 1</a></li>
-                                            <li><a href="row-listings-filterstop-search-aside.html">Full+Search mobile 1</a></li>
-                                            <li><a href="row-listings-filterscol.html">Sidebar+Search mobile 2</a></li>
-                                            <li><a href="row-listings-filterstop.html">Full+Search mobile 2</a></li>
-                                            <li><a href="row-listings-isotope.html">Full+Isotope filter</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="listing-map.html">Listing Map</a></li>
-                                    <li>
-                                        <span><a href="#0">Open Street Map</a></span>
-                                        <ul>
-                                            <li><a href="grid-listings-filterscol-search-aside-openstreetmap.html">Sidebar+Search mobile 1</a></li>
-                                            <li><a href="grid-listings-filterstop-search-aside-openstreetmap.html">Full+Search mobile 1</a></li>
-                                            <li><a href="grid-listings-filterscol-openstreetmap.html">Sidebar+Search mobile 2</a></li>
-                                            <li><a href="grid-listings-filterstop-openstreetmap.html">Full+Search mobile 2</a></li>
-                                            <li><a href="grid-listings-isotope-openstreetmap.html">Full+Isotope filter</a></li>
-                                            <li><a href="row-listings-filterscol-search-aside-openstreetmap.html">Sidebar+Search mobile 1</a></li>
-                                            <li><a href="row-listings-filterstop-search-aside-openstreetmap.html">Full+Search mobile 1</a></li>
-                                            <li><a href="row-listings-filterscol-openstreetmap.html">Sidebar+Search mobile 2</a></li>
-                                            <li><a href="row-listings-filterstop-openstreetmap.html">Full+Search mobile 2</a></li>
-                                            <li><a href="row-listings-isotope-openstreetmap.html">Full+Isotope filter</a></li>
-                                            <li><a href="detail-hotel-openstreetmap.html">Detail page 1</a></li>
-                                            <li><a href="listing-map-openstreetmap.html">Listing Map</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <span><a href="#0">Detail pages</a></span>
-                                        <ul>
-                                            <li><a href="detail-hotel.html">Detail page 1</a></li>
-                                            <li><a href="detail-restaurant.html">Detail page 2</a></li>
-                                            <li><a href="detail-shop.html">Detail page 3</a></li>
-                                            <li><a href="detail-carousel.html">Detail page Carousel 1</a></li>
-                                            <li><a href="detail-carousel-2.html">Detail page Carousel 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="bookings.html">Bookings - Purchases</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="confirm.html">Confirm</a></li>
-                                </ul>
-                            </li>
+
                             <li><span><a href="#0">Город {{$value}}</a></span>
                                 <ul>
                                     <li><a href="/city/astana">Астана</a></li>

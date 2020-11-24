@@ -28,7 +28,7 @@
             <footer class="plus_border">
         <div class="container margin_60_35">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-6">
                     <h3 data-target="#collapse_ft_1">Быстрые ссылки</h3>
                     <div class="collapse dont-collapse-sm" id="collapse_ft_1">
                         <ul class="links">
@@ -41,7 +41,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-6">
                     <h3 data-target="#collapse_ft_2">Категории</h3>
                     <div class="collapse dont-collapse-sm" id="collapse_ft_2">
                         <ul class="links">
@@ -56,17 +56,17 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="col-lg-4 col-md-6 col-sm-6">
                     <h3 data-target="#collapse_ft_3">Контакты</h3>
                     <div class="collapse dont-collapse-sm" id="collapse_ft_3">
                         <ul class="contacts">
-                            <li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li>
-                            <li><i class="ti-headphone-alt"></i>+39 06 97240120</li>
+                    {{--         <li><i class="ti-home"></i>97845 Baker st. 567<br>Los Angeles - US</li> --}}
+                            <li><i class="ti-headphone-alt"></i><a href="tel:+77058317474"></a>+7 (705) 831 74 74</li>
                             <li><i class="ti-email"></i><a href="#0">info@sparker.com</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+{{--                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <h3 data-target="#collapse_ft_4">Подписывайтесь на рассылку!</h3>
                     <div class="collapse dont-collapse-sm" id="collapse_ft_4">
                         <div id="newsletter">
@@ -89,12 +89,12 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!-- /row-->
             <hr>
             <div class="row">
-                <div class="col-lg-6">
+{{--                 <div class="col-lg-6">
                     <ul id="footer-selector">
                         <li>
                             <div class="styled-select" id="lang-selector">
@@ -116,12 +116,12 @@
                         </li>
                         <li><img src="img/cards_all.svg" alt=""></li>
                     </ul>
-                </div>
-                <div class="col-lg-6">
+                </div> --}}
+                <div class="col-lg-12">
                     <ul id="additional_links">
                         <li><a href="#0">Правила использования</a></li>
                         <li><a href="#0">Приватность</a></li>
-                        <li><span>© 2020 cute.kz</span></li>
+                        <li><span>© 2020 <a href="https://coderoad.ru/itarget.kz">iTarget.kz</a></span></li>
                     </ul>
                 </div>
             </div>
