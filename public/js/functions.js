@@ -14,7 +14,11 @@
 	// Sticky sidebar
 	$('#sidebar').theiaStickySidebar({
 		updateSidebarHeight: true,
-		additionalMarginTop: 150
+		additionalMarginTop: 75
+	});
+		$('#sidebar').theiaStickySidebar({
+		updateSidebarHeight: true,
+		additionalMarginTop: 100
 	});
 	
 	// Faq section
@@ -272,7 +276,7 @@
 			});
 		} else {
 			$('.sticky_horizontal').stick_in_parent({
-				offset_top: 60			
+				offset_top: 0			
 			});
 		}
 	});	

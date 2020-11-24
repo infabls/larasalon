@@ -1,3 +1,20 @@
 /*============================================================================================*/
 /* Your custom styles below */
 /*============================================================================================*/
+.page-link{
+	text-align: center;
+}
+.category{
+	margin-top: 20px;
+}
+.main-name{
+	display: flex;
+	justify-content: space-between;
+}
+.cat-address{
+	display: flex;
+	flex-direction: column;
+}
+.strip .wrapper small{
+	margin-top: 10px;
+}
