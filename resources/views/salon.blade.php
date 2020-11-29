@@ -9,7 +9,7 @@
 
 @if($salon['avatarUrl2'] !== '')
 <div id="carousel_in" class="owl-carousel owl-theme">
-  <div class="item"><img src="https://zapis.kz/{{$salon['avatarUrl']}}" alt=""></div>
+  <div class="item"><img src="{{$salon['avatarUrl']}}" alt=""></div>
 </div>
 @endif
 <nav class="secondary_nav sticky_horizontal_2">
@@ -45,14 +45,26 @@
                         </div>
                         @endif
                     </div>
+                    @if ($salon['address'] !== '')
+
                     <a class="address" href="https://www.google.com/maps/dir//Assistance+%E2%80%93+H%C3%B4pitaux+De+Paris,+3+Avenue+Victoria,+75004+Paris,+Francia/@48.8606548,2.3348734,14z/data=!4m15!1m6!3m5!1s0x47e66e1de36f4147:0xb6615b4092e0351f!2sAssistance+Publique+-+H%C3%B4pitaux+de+Paris+(AP-HP)+-+Si%C3%A8ge!8m2!3d48.8568376!4d2.3504305!4m7!1m0!1m5!1m1!1s0x47e67031f8c20147:0xa6a9af76b1e2d899!2m2!1d2.3504327!2d48.8568361">{{$salon['address']}}</a>
+
+                    @endif
                 </div>
                 <p>{!!$salon['description']!!}</p>
                 <h5 class="add_bottom_15 icon-compass-1">Город: {{$salon['cityName']}}</h5>
+
+                @if ($salon['phoneNumbers'] !== '')
                 <h5 class="add_bottom_15 icon-phone-squared">Номер: <a href="tel:{{$salon['phoneNumbers']}}">{{$salon['phoneNumbers']}}</a></h5>
+                @endif
+
+                @if ($salon['instagramProfile'] !== '')
                 <h5 class="add_bottom_15 icon-instagramm">Инстаграм: <a target="_blank" href="https://www.instagram.com/{{$salon['instagramProfile']}}/">{{$salon['instagramProfile']}}</a></h5>
+                @endif
+                <p>{!! $salon['description'] !!}</p>
+
     {{--             <div class="links">
-    <p>{!! $salon['description'] !!}</p>
+    <
     <p>: </p>
     <p>: </p>
 </div> --}}
@@ -354,6 +366,8 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
 
 <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
 <script type="text/javascript">

@@ -121,7 +121,7 @@
           <div class="strip grid">
             <figure>
               <a href="#0" class="wish_bt"></a>
-              <a href="/salon/{{$salon->urlKey}}"><img src="https://zapis.kz/{{$salon->avatarUrl}}" class="img-fluid" alt="">
+              <a href="/salon/{{$salon->urlKey}}"><img src="{{$salon->avatarUrl}}" class="img-fluid" alt="">
                 <div class="read_more"><span>Перейти</span></div>
               </a>
               <small>{{ $salon->cityName }}</small>
