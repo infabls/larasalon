@@ -4,17 +4,12 @@
                 <div class="col-lg-3 col-12">
                     <div id="logo">
                         <a href="/">
-                            <img src="/img/logo_sticky.svg" width="165" height="35" alt="" class="logo_sticky">
+                            <img src="/img/logo.png" width="150" height="35" alt="" class="logo_sticky">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-9 col-12">
-                    <ul id="top_menu">
-                        <li><a href="account.html" class="btn_add">Добавить салон</a></li>
-                        <li><a href="/login" class="login" title="Sign In">Sign In</a></li>
-                        <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
-                    </ul>
-                    <!-- /top_menu -->
+                <div class="col-lg-9 col-12 menu_container">
+
                     <a href="#menu" class="btn_mobile">
                         <div class="hamburger hamburger--spin" id="hamburger">
                             <div class="hamburger-box">
@@ -81,6 +76,12 @@
                             <li><span><a href="#0">Buy template</a></span></li>
                         </ul>
                     </nav>
+                    <ul id="top_menu">
+                        <li><a href="account.html" class="btn_add">Добавить салон</a></li>
+                        <li><a href="/login" class="login" title="Sign In">Sign In</a></li>
+                        <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+                    </ul>
+                    <!-- /top_menu -->
                 </div>
             </div>
             <!-- /row -->

@@ -1,6 +1,14 @@
 /*============================================================================================*/
 /* Your custom styles below */
 /*============================================================================================*/
+@media (min-width:1023px) {
+	.menu_container{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-top: -8px;
+}
+}
 .page-link{
 	text-align: center;
 }
