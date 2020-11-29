@@ -32,19 +32,19 @@
                     <p>Ищите мастеров и салоны самым удобным способом!</p>
                     <form>
                         <div class="row no-gutters custom-search-input-2">
-                            <div class="col-lg-4">
+                            <div class="col-lg-5">
                                 <div class="form-group">
                                     <input class="form-control" type="text" placeholder="Чот вы ищете?">
                                     <i class="icon_search"></i>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-5">
                                 <div class="form-group">
                                     <input class="form-control" type="text" placeholder="Город">
                                     <i class="icon_pin_alt"></i>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
+{{--                             <div class="col-lg-3">
                                 <select class="wide">
                                     <option>Все категории</option> 
                                     <option>Парикмахерские</option>
@@ -56,17 +56,17 @@
                                     <option>Брови</option>
                                     <option>Ресницы</option>
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="col-lg-2">
                                 <input type="submit" value="Найти">
                             </div>
                         </div>
-                        <!-- /row -->
+                        
                     </form>
                 </div>
             </div>
         </section>
-        <!-- /hero_single -->
+        
         
         <div class="bg_color_1">
             <div class="container margin_80_55">
@@ -90,7 +90,7 @@
                     </div>
                     @endforeach
                 </div>
-                <!-- /row -->
+                
             </div>
             <!-- /container --> 
         </div>
@@ -166,7 +166,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /row -->
+                    
                     <p class="text-center add_top_30 wow bounceIn" data-wow-delay="0.5"><a href="register.html" class="btn_1 rounded">Зарегистрироваться</a></p>
                 </div>
             </div>
@@ -195,7 +195,7 @@
                     </div>
                     @endforeach
                 </div>
-                <!-- /row -->
+                
             </div>
             <!-- /container --> 
         </div>
@@ -280,7 +280,7 @@
                 </div>
                 <!-- /box_news -->
             </div>
-            <!-- /row -->
+            
             <p class="btn_home_align"><a href="blog.html" class="btn_1 rounded">View all news</a></p>
         </div>
         <!-- /container -->
