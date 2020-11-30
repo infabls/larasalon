@@ -109,7 +109,7 @@
                     <div class="strip grid">
                         <figure>
                             <a href="{{url('/salon/' .$salon->urlKey)}}" class="wish_bt"></a>
-                            <a href="{{url('/salon/' .$salon->urlKey)}}"><img src="https://zapis.kz{{$salon->avatarUrl}}" class="img-fluid" alt="" width="400" height="266"><div class="read_more"><span>Подробнее</span></div></a>
+                            <a href="{{url('/salon/' .$salon->urlKey)}}"><img src="{{$salon->avatarUrl}}" class="img-fluid" alt="" width="400" height="266"><div class="read_more"><span>Подробнее</span></div></a>
                             <small>{{$city->name}}</small>
                         </figure>
                         <div class="wrapper">
