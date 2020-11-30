@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', __('Terms & Conditions'))
+@section('title', 'Мои заявки')
 
 @section('content')
 

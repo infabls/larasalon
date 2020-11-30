@@ -72,6 +72,11 @@ Route::post('editsalon/{id}', function ($id, Request $request) {
     }
     $salon->name = $request->name;
     $salon->phoneNumbers = $request->phoneNumbers;
+    $salon->cityName = $request->cityName;
+    $salon->description = $request->description;
+    $salon->instagramProfile = $request->instagramProfile;
+    $salon->markerY = $request->markerY;
+    $salon->markerX = $request->markerX;
     $salon->save();
     return redirect("editsalon/$id")->with('status', 'Страница была изменена');
 });

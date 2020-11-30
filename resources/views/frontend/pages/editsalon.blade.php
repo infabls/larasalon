@@ -15,14 +15,34 @@
                      <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{ url('editsalon/'.$salon->id) }}">
                        @csrf
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Name</label>
-                          <input  value="{{$salon->name}}" type="text" id="name" name="name" class="form-control" required="">
+                          <label for="name">Название</label>
+                          <input  value="{{$salon->name}}" type="text" id="name" name="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="cityName">Город</label>
+                          <input  value="{{$salon->cityName}}" type="text" id="cityName" name="cityName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                          <label for="description">Описание</label>
+                          <textarea id="description" name="description" class="form-control">{{$salon->description}}</textarea>
+                        </div>
+                        <div class="form-group">
+                          <label for="instagramProfile">Инстаграм</label>
+                          <input  value="{{$salon->instagramProfile}}" type="text" id="instagramProfile" name="instagramProfile" class="form-control">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputEmail1">Номер телефона</label>
                           <textarea  name="phoneNumbers" class="form-control" required="">{{$salon->phoneNumbers}}</textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="form-group">
+                          <label for="markerY">Широта (Latitude)</label>
+                          <input  value="{{$salon->markerY}}" type="text" id="markerY" name="markerY" class="form-control">
+                        </div>
+                         <div class="form-group">
+                          <label for="markerX">Широта (Latitude)</label>
+                          <input  value="{{$salon->markerX}}" type="text" id="markerX" name="markerX" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
                       </form>
                     </x-slot>
                 </x-frontend.card>
