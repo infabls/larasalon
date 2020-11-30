@@ -29,12 +29,12 @@
             <label for="latest"><a href="/nearest">Ближайшие</a></label>
           </div>
         </li>
-        <li>
+{{--         <li>
           <div class="layout_view">
             <a href="#0" class="active"><i class="icon-th"></i></a>
             <a href="listing-2.html"><i class="icon-th-list"></i></a>
             <a href="list-map.html"><i class="icon-map"></i></a>
-          </div>
+          </div> --}}
         </li>
         <li>
           <a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Скрыть" data-text-original="На карте">На карте</a>
@@ -140,7 +140,7 @@
               {{-- проверка на наличие отзывов --}}
               @if ($salon->reviewCount > 0)
               <li>
-                <div class="score"><span>Superb<em>{{ $salon->reviewCount }} Отзывов</em></span><strong>{{ $salon->averageRating }}</strong></div>
+                <div class="score"><span>Рейтинг<em>{{ $salon->reviewCount }} Отзывов</em></span><strong>{{ $salon->averageRating }}</strong></div>
               </li>
               @else
               <li></li>

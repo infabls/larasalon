@@ -323,7 +323,7 @@
                 <div class="form-group" id="input-dates">
                     <div class="form-group">
                       <label for="exampleInputEmail1">Имя</label>
-                      <input  name="name" type="text" class="form-control" id="name" required="" placeholder="Нурсултан Назарбаев">
+                      <input  name="name" type="text" class="form-control" id="name" required="" placeholder="Имя Фамилия">
                   </div>
               </div> 
               <div class="form-group" id="input-dates">

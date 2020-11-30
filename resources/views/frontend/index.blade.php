@@ -30,7 +30,7 @@
                 <div class="container">
                     <h3>Все салоны вашего города!</h3>
                     <p>Ищите мастеров и салоны самым удобным способом!</p>
-                    <form>
+{{--                     <form>
                         <div class="row no-gutters custom-search-input-2">
                             <div class="col-lg-5">
                                 <div class="form-group">
@@ -44,7 +44,7 @@
                                     <i class="icon_pin_alt"></i>
                                 </div>
                             </div>
-{{--                             <div class="col-lg-3">
+                            <div class="col-lg-3">
                                 <select class="wide">
                                     <option>Все категории</option> 
                                     <option>Парикмахерские</option>
@@ -56,13 +56,13 @@
                                     <option>Брови</option>
                                     <option>Ресницы</option>
                                 </select>
-                            </div> --}}
-                            <div class="col-lg-2">
+                            </div>
+                            <div class="col-lg-12">
                                 <input type="submit" value="Найти">
                             </div>
                         </div>
                         
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </section>
@@ -200,8 +200,8 @@
             <!-- /container --> 
         </div>
         <!-- /bg_color_1 -->
-
-                <div class="container margin_80_55">
+{{--!!! ПРИЛОЖЕНИЕ !!!--}}
+{{--                 <div class="container margin_80_55">
             <div class="main_title_2">
                 <span><em></em></span>
                 <h2>Скачивайте приложение cute.kz</h2>
@@ -217,7 +217,7 @@
                     <div class="add_bottom_15"><small>*Некоторое примечание к этому блоку.</small></div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- /container -->
 
         <div class="container margin_80_55">
