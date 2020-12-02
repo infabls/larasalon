@@ -31,11 +31,11 @@
                                     <li><a href="/{{$value}}/category/resnitsy">Ресницы</a></li>
                                 </ul>
                             </li> --}}
-                            <li><span><a href="/{{$value}}/category/parikmaherskie-uslugi">Волосы</a></span></li>
+                            <li><span><a href="/{{$value}}/category/parikmaherskie-uslugi">Парикмахерские услуги</a></span></li>
                             <li><span><a href="/{{$value}}/category/nogtevoi-servis">Ногти</a></span></li>
                             <li><span><a href="/{{$value}}/category/uhod-za-telom">Уход за телом</a></span></li>
                             <li><span><a href="/{{$value}}/category/makiyazh">Макияж</a></span></li>
-                            <li><span><a href="/{{$value}}/category/udalenie-volos">Депиляция</a></span></li>
+                            <li><span><a href="/{{$value}}/category/udalenie-volos">Удаление волос</a></span></li>
                             <li><span><a href="/{{$value}}/category/kosmetologiya">Косметология</a></span></li>
                             <li><span><a href="/{{$value}}/category/brovi">Брови</a></span></li>
                             <li><span><a href="/{{$value}}/category/resnitsy">Ресницы</a></span></li>
