@@ -26,7 +26,7 @@ Route::post('createOrder', function (Request $request) {
 });
 
 // страница категории с городами
-Route::get('/{city_key}/category/{key}', function ($city_key, $key) {
+Route::get('/{city_key}/category/{key}', function ($city_key, $key, Request $request) {
 	$value = session('city');
 	// вытаскиваем данные о городе
 	$city =  DB::table('cities')
@@ -41,11 +41,26 @@ Route::get('/{city_key}/category/{key}', function ($city_key, $key) {
 	$subcats = DB::table('categories')
 	->where('parentId', '=', $cat->id)
 	->get();
-	
-	// данные о салонах в категории
-	$salons = Salon::where('cat_key', 'like', '%' . $cat->toArray()['name'] . '%')
-	->where('cityName', '=', $city->name)
-	->paginate(12);
+
+
+	// фильтрация
+	if ($request->filterBy === null) {
+		// данные о салонах в категории
+		$salons = Salon::where('cat_key', 'like', '%' . $cat->toArray()['name'] . '%')
+		->where('cityName', '=', $city->name)
+		->paginate(12);
+	}
+
+	//  с рейтингом
+	if ($request->filterBy == 'withratings') {
+		// данные о салонах в категории
+		$salons = Salon::where('cat_key', 'like', '%' . $cat->toArray()['name'] . '%')
+		->where('cityName', '=', $city->name)
+		->where('reviewCount', '>', 0)
+		->paginate(12)
+		->appends(request()->query());
+	}
+
 
 
 	// вывод ближайших
@@ -113,12 +128,9 @@ Route::get('/nearest', function (Request $request) {
                 ) * 180/pi()
             ) * 60 * 1.1515
         )
-    as distance")->orderBy('distance')->paginate(15);
-
-
-
-
-
+    as distance")->orderBy('distance')
+		->paginate(12)
+		->appends(request()->query());
 	
         foreach ($salons as $salon) {
           $salon->distance = getDistanceBetweenPointsNew($salon->markerY,$salon->markerX, $userlat, $userlng);

@@ -17,17 +17,17 @@
                             <input type="radio" id="all" name="listing_filter" value="all" checked>
                             <label for="all">Все</label>
                             <input type="radio" id="popular" name="listing_filter" value="popular">
-                            <label for="popular">С отзывами</label>
+                            <label for="popular"><a href="?filterBy=withratings">С отзывами</a></label>
                             <input type="radio" id="latest" name="listing_filter" value="latest">
-                            <label for="latest">Ближайшие</label>
+                            <label for="latest"><a href="/nearest">Ближайшие</a></label>
                         </div>
                     </li>
                     <li>
-                        <div class="layout_view">
+                       <!--  <div class="layout_view">
                             <a href="#0" class="active"><i class="icon-th"></i></a>
                             <a href="listing-2.html"><i class="icon-th-list"></i></a>
                             <a href="list-map.html"><i class="icon-map"></i></a>
-                        </div>
+                        </div> -->
                     </li>
                     <li>
                         <a class="btn_map" data-toggle="collapse" href="#collapseMap" aria-expanded="false" aria-controls="collapseMap" data-text-swap="Скрыть" data-text-original="На карте">На карте</a>
@@ -132,7 +132,7 @@ document.querySelector('#find-me').addEventListener('click', geoFindMe);
         <div class="strip grid">
             <figure>
                 <a href="#0" class="wish_bt"></a>
-                <a href="/salon/{{$salon->urlKey}}"><img src="https://zapis.kz/{{$salon->avatarUrl}}" class="img-fluid" alt="">
+                <a href="/salon/{{$salon->urlKey}}"><img src="{{$salon->avatarUrl}}" class="img-fluid" alt="">
                     <div class="read_more"><span>Перейти</span></div>
                 </a>
                 <small>{{ $salon->cityName }}</small>
