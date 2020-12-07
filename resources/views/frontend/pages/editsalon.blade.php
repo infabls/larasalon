@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', __('Terms & Conditions'))
+@section('title', 'Редактировать салон '. $salon->name)
 
 @section('content')
     <div class="container py-4">

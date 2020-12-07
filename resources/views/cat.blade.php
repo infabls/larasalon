@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', $cat['name'] .' - ' . $city->name)
 @section('content')
 
 
@@ -46,7 +46,7 @@
     <div id="map" class="map"></div>
   </div>
 
-  <div class="row category">
+ <div class="row category">
     <aside class="col-lg-3" id="sidebar2">
       <div id="filters_col">
         <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" id="filters_col_bt">Фильтры </a>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Terms & Conditions'))
+@section('title', 'Все салоны красоты Казахстана')
 
 @section('content')
     <link href="css/bootstrap.min.css" rel="stylesheet">
