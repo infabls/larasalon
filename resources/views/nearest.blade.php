@@ -45,7 +45,7 @@
                 <div class="collapse show" id="collapseFilters">
                     <div class="filter_type">
                         <!-- <h6>ВАждн</h6> -->
-                          <button id = "find-me">Show my location</button><br/>
+                          <button id = "find-me">Показать мою локацию</button><br/>
   <p id ="status"></p>
   <a id ="map-link"></a>
   <script>
@@ -67,11 +67,11 @@
   }
 
   function error() {
-    status.textContent = 'Unable to retrieve your location';
+    status.textContent = 'Не получилось определить ваше местоположение. Возможно у вас отключена служба геолокации?';
   }
 
   if(!navigator.geolocation) {
-    status.textContent = 'Geolocation is not supported by your browser';
+    status.textContent = 'Ваш браузер не поддерживает определение геолокации';
   } else {
     status.textContent = 'Locating…';
     navigator.geolocation.getCurrentPosition(success, error);

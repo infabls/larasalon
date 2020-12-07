@@ -33,6 +33,7 @@ class CreateSalonsTable extends Migration
             $table->string('zoom');
             $table->string('cat_key');
             $table->string('ownerId')->default(1);
+            $table->string('kaspiRed')->default(0);
             $table->timestamps();   
         });
     }
