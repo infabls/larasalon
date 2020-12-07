@@ -17,11 +17,15 @@
         <li>
           <div class="switch-field">
             <input type="radio" id="all" name="listing_filter" value="all" checked>
-            <label for="all">Все</label>
+            <label for="all"><a href="#" onclick='window.location.href =  window.location.href.split("?")[0];'>Все</a></label>
             <input type="radio" id="popular" name="listing_filter" value="popular">
             <label for="popular"><a href="?filterBy=withratings">С отзывами</a></label>
+            <input type="radio" id="popular" name="listing_filter" value="popular">
+            <label for="popular"><a href="?filterBy=verified">Проверенные</a></label>
             <input type="radio" id="latest" name="listing_filter" value="latest">
             <label for="latest"><a href="/nearest">Ближайшие</a></label>
+            <input type="radio" id="latest" name="listing_filter" value="latest">
+            <label for="latest"><a href="?filterBy=kaspiRed">Kaspi Red</a></label>
           </div>
         </li>
 {{--         <li>
@@ -103,11 +107,12 @@
       <!--/filters col-->
     </aside>
     <!-- /aside -->
-
+    
     <div class="col-lg-9">
       <div class="category_name">
         <h1>{{$cat['name']}}</h1>
       </div>
+      @if ($salons->count() > 0)
       <div class="row">
 
         @foreach ($salons->sortBy('distance') as $salon)
@@ -148,7 +153,9 @@
         @endforeach
       </div>
       {!! $salons->render() !!}
-
+        @else
+        <p>Нет салонов отвечающих вашим параметрам</p>
+        @endif
     </div>
   </div>
 

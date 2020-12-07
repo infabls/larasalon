@@ -77,6 +77,7 @@ Route::post('editsalon/{id}', function ($id, Request $request) {
     $salon->instagramProfile = $request->instagramProfile;
     $salon->markerY = $request->markerY;
     $salon->markerX = $request->markerX;
+    $salon->kaspiRed = $request->kaspiRed;
     $salon->save();
     return redirect("editsalon/$id")->with('status', 'Страница была изменена');
 });

@@ -34,6 +34,10 @@
                           <label for="exampleInputEmail1">Номер телефона</label>
                           <textarea  name="phoneNumbers" class="form-control" required="">{{$salon->phoneNumbers}}</textarea>
                         </div>
+                         <div class="form-group">
+                          <label for="kaspiRed">Есть ли Kaspi Red? 0 - нет, 1 - да</label>
+                          <input type="number" name="kaspiRed" class="form-control" required="" value="{{$salon->kaspiRed}}">
+                        </div>
                         <div class="form-group">
                           <label for="markerY">Широта (Latitude)</label>
                           <input  value="{{$salon->markerY}}" type="text" id="markerY" name="markerY" class="form-control">

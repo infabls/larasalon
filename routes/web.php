@@ -61,7 +61,24 @@ Route::get('/{city_key}/category/{key}', function ($city_key, $key, Request $req
 		->appends(request()->query());
 	}
 
-
+	//  только зареганные
+	if ($request->filterBy == 'verified') {
+		// данные о салонах в категории
+		$salons = Salon::where('cat_key', 'like', '%' . $cat->toArray()['name'] . '%')
+		->where('cityName', '=', $city->name)
+		->where('ownerId', '!=', 1)
+		->paginate(12)
+		->appends(request()->query());
+	}
+	//  c KaspiRed
+	if ($request->filterBy == 'kaspiRed') {
+		// данные о салонах в категории
+		$salons = Salon::where('cat_key', 'like', '%' . $cat->toArray()['name'] . '%')
+		->where('cityName', '=', $city->name)
+		->where('kaspiRed', '=', 1)
+		->paginate(12)
+		->appends(request()->query());
+	}
 
 	// вывод ближайших
 		// ука
