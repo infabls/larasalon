@@ -23,7 +23,7 @@
             <input type="radio" id="popular" name="listing_filter" value="popular">
             <label for="popular"><a href="?filterBy=verified">Проверенные</a></label>
             <input type="radio" id="latest" name="listing_filter" value="latest">
-            <label for="latest"><a href="/nearest">Ближайшие</a></label>
+            <label for="latest"><a href="#" id='find-me'>Ближайшие</a></label>
             <input type="radio" id="latest" name="listing_filter" value="latest">
             <label for="latest"><a href="?filterBy=kaspiRed">Kaspi Red</a></label>
           </div>
@@ -159,6 +159,43 @@
     </div>
   </div>
 
+<!-- <button id = "find-me">Показать мою локацию</button><br/> -->
+  <p id ="status"></p>
+  <a id ="map-link"></a>
+  <script>
+    function geoFindMe() {
+
+      const status = document.querySelector('#status');
+      const mapLink = document.querySelector('#map-link');
+
+      mapLink.href = '';
+      mapLink.textContent = '';
+
+    function success(position) {
+      const latitude  = position.coords.latitude;
+      const longitude = position.coords.longitude;
+
+      status.textContent = '';
+      mapLink.href = `?lat=${latitude}&lng=${longitude}`;
+      mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+      mapLink.click();
+    }
+
+    function error() {
+      status.textContent = 'Не получилось определить ваше местоположение. Возможно у вас отключена служба геолокации?';
+    }
+
+    if(!navigator.geolocation) {
+      status.textContent = 'Ваш браузер не поддерживает определение геолокации';
+    } else {
+      status.textContent = 'Locating…';
+      navigator.geolocation.getCurrentPosition(success, error);
+    }
+
+    }
+
+    document.querySelector('#find-me').addEventListener('click', geoFindMe);
+  </script>
 
   <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
 

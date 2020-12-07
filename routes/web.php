@@ -27,12 +27,15 @@ Route::post('createOrder', function (Request $request) {
 
 // страница категории с городами
 Route::get('/{city_key}/category/{key}', function ($city_key, $key, Request $request) {
+
 	$value = session('city');
 	// вытаскиваем данные о городе
 	$city =  DB::table('cities')
                 ->where('city_key', '=', $city_key)
                 ->get()
                 ->first();
+    $userlat = session('lat');
+    $userlng = session('lng');
 
 	// вытаскиваем данные о категории
 	$cat = Categories::where('cat_key', '=', $key)->first();
@@ -48,7 +51,8 @@ Route::get('/{city_key}/category/{key}', function ($city_key, $key, Request $req
 		// данные о салонах в категории
 		$salons = Salon::where('cat_key', 'like', '%' . $cat->toArray()['name'] . '%')
 		->where('cityName', '=', $city->name)
-		->paginate(12);
+		->paginate(12)
+		->appends(request()->query());
 	}
 
 	//  с рейтингом
@@ -80,19 +84,53 @@ Route::get('/{city_key}/category/{key}', function ($city_key, $key, Request $req
 		->appends(request()->query());
 	}
 
-	// вывод ближайших
-		// ука
-        // $userlat = '49.95677';
-        // $userlng = '82.61413';
+	// цикл вычисления дистанции между точками
+	// тут, потому что при выводе ближайших - своя логика
+	foreach ($salons as $salon) {
+       $salon->distance = getDistanceBetweenPointsNew($salon->markerY,$salon->markerX, $userlat, $userlng);
+    }
 
-		// нурик
-		$userlat = '51.14942';
-		$userlng = '71.42658';
-        foreach ($salons as $salon) {
+	// вывод ближайших
+	if ($request->input('lat') !== NULL) {
+		// берем данные из гет параметров
+		$userlat = $request->input('lat');
+		$userlng = $request->input('lng');
+
+		// если не установлены
+		if ($userlat == NULL OR $userlng == NULL) {
+			if(session('lat') == NULL) {
+			$userlat = '51.14942';
+			$userlng = '71.42658';
+			}
+		} else {
+			session()->put('lat', $userlat);
+			session()->put('lng', $userlng);
+		}
+		$salons = DB::table('salons')
+				->selectRaw("*, 
+	        (
+	            (
+	                (
+	                    acos(
+	                        sin((   $userlat * pi() / 180))
+	                        *
+	                        sin(( `markerY` * pi() / 180)) + cos(( $userlat * pi() /180 ))
+	                        *
+	                        cos(( `markerY` * pi() / 180)) * cos((( $userlng - `markerX`) * pi()/180)))
+	                ) * 180/pi()
+	            ) * 60 * 1.1515
+	        )
+	    as distance")->orderBy('distance')
+			->where('cat_key', 'like', '%' . $cat->toArray()['name'] . '%')
+			->where('cityName', '=', $city->name)
+			->paginate(12)
+			->appends(request()->query());
+
+		 foreach ($salons as $salon) {
           $salon->distance = getDistanceBetweenPointsNew($salon->markerY,$salon->markerX, $userlat, $userlng);
         }
+	}
 
-        
 	return view('cat',[ 
 		'cat' => $cat,
 		'salons' => $salons,
@@ -100,66 +138,7 @@ Route::get('/{city_key}/category/{key}', function ($city_key, $key, Request $req
 		'value' => $value,
 		'subcats' => $subcats,
 		'userlat' => $userlat,
-		'userlng' => $userlng
-	]);
-});
-
-
-// вывод ближайших компаний
-Route::get('/nearest', function (Request $request) {
-	
-	$userlat = $request->input('lat');
-	$userlng = $request->input('lng');
-	// если не установлены
-	if ($userlat == NULL OR $userlng == NULL) {
-		// нурик
-		$userlat = '51.14942';
-		$userlng = '71.42658';
-	}
-	$value = session('city');
-	// вытаскиваем данные о городе
-	$city =  DB::table('cities')
-                ->where('city_key', '=', $value)
-                ->get()
-                ->first();
-
-    // вывод ближайших
-		// ука
-        // $userlat = '49.95677';
-        // $userlng = '82.61413';
-
-
-
-	// данные о салонах в категории
-		$salons = DB::table('salons')
-			->selectRaw("*, 
-        (
-            (
-                (
-                    acos(
-                        sin((   $userlat * pi() / 180))
-                        *
-                        sin(( `markerY` * pi() / 180)) + cos(( $userlat * pi() /180 ))
-                        *
-                        cos(( `markerY` * pi() / 180)) * cos((( $userlng - `markerX`) * pi()/180)))
-                ) * 180/pi()
-            ) * 60 * 1.1515
-        )
-    as distance")->orderBy('distance')
-		->paginate(12)
-		->appends(request()->query());
-	
-        foreach ($salons as $salon) {
-          $salon->distance = getDistanceBetweenPointsNew($salon->markerY,$salon->markerX, $userlat, $userlng);
-        }
-
-        
-	return view('nearest',[ 
-		'salons' => $salons,
-		'city' => $city,
-		'value' => $value,
-		'userlat' => $userlat,
-		'userlng' => $userlng
+		'userlng' => $userlng 
 	]);
 });
 
@@ -174,12 +153,6 @@ Route::get('salon/{key}', function ($key) {
 	]);
 });
 
-// все салоны
-Route::get('salons/', function () {
-	$salons = DB::table('salons')->paginate(15);
-	// $salon = DB::table('salons')->where('urlKey', $key)->first()->toArray();
-	return view('salons',[ 'salons' => $salons]);
-});
 /*
  * Global Routes
  *
