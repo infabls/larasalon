@@ -104,10 +104,16 @@ Route::post('editsalon/{id}', function ($id, Request $request) {
 // список заявок
 Route::get('orders', function () {
     $id = Auth::id();
-    $salon = Salon::where('ownerId', '=', $id)->firstOrFail();
-    // данные о заявках фирме
-    $orders = DB::table('orders')->where('firm_id', '=', $salon->id)
-    ->paginate(10);
+    // вытаскиваем все салоны
+    $salon = Salon::where('ownerId', '=', $id)->get();
+    // количество салонов
+    $salon_count = $salon->count();
+    // цикл поиска заявок
+    for ($i=0; $i < $salon_count; $i++) { 
+        $orders[$i] = DB::table('orders')->where('firm_id', '=', $salon[$i]->id)
+        ->get();
+    }
+        // dd($orders);
     return view('frontend.pages.my-orders',[ 'orders' => $orders]);
 })->name('home.orders');
 
