@@ -85,7 +85,7 @@
                     </nav>
                     <ul id="top_menu">
                         <li><a href="account.html" class="btn_add">Добавить салон</a></li>
-                        <li><a href="/login" class="login" title="Sign In">Sign In</a></li>
+                        <li><a href="/dashboard" class="login" title="Войти">Войти</a></li>
 {{--                         <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> --}}
                     </ul>
                     <!-- /top_menu -->
