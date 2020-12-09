@@ -24,7 +24,6 @@ class DashboardController extends Controller
 	    $salons_count = $salons->count();
 	    $orders_count = 0;
 	    	for ($i=0; $i < $salons_count; $i++) { 
-	    		var_dump($salons[$i]->id);
 	    		$order[$i] = Orders::where('firm_id', '=', $salons[$i]->id);
 	    		// количество заявок
 	    		$orders_count += $order[$i]->count();
