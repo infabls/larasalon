@@ -14,8 +14,8 @@
                     <x-slot name="body">
                         @lang('You are logged in!')
                         <br>
-                        <a href="/orders">Мои заявки</a><br>
-                        <a href="/salons">Мои салоны</a><br>
+                        <a href="/orders">Мои заявки ({{$orders}})</a><br>
+                        <a href="/salons">Мои салоны ({{$salons}})</a><br>
                     </x-slot>
                 </x-frontend.card>
             </div><!--col-md-10-->
