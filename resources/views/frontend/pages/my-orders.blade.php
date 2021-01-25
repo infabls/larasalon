@@ -21,13 +21,11 @@
                           <th>Имя</th>
                           <th>Номер телефона</th>
                           <th>Статус</th>
-                          <th>Ссылка на салон</th>
                           <th>Действия</th>
                         </thead>
                         <!-- Тело таблицы -->
                         <tbody>
-                          @foreach ($orders as $item)
-                            @foreach ($item as $order)
+                          @foreach ($orders as $order)
                             <tr>
                               <!-- Имя клиента -->
                               <td class="table-text">
@@ -40,9 +38,7 @@
                                <td class="table-text">
                                 <div>{{ $order->status }}</div>
                               </td> 
-                              <td class="table-text">
-                                <div><a href="{{ url('editsalon/'.$order->firm_id) }}">{{ $order->firm_id }}</a></div>
-                              </td> 
+
                               <!-- действия с заявками -->
                               <td class="table-text">
                                     <form style='float:left' action="{{ url('orders/'.$order->id) }}" method="POST">
@@ -63,13 +59,13 @@
                                   </form>
                               </td> 
                             </tr>
-                            @endforeach
                           @endforeach
                           @else
                           <p>У вас нет заявок. Хотите дать рекламу?</p>
                           @endif
                         </tbody>
                       </table>
+                {!! $orders->render() !!}
                     </div>
                     </x-slot>
                 </x-frontend.card>
