@@ -9,7 +9,6 @@
 
     <!-- YOUR CUSTOM CSS -->
     <link href="css/custom.css" rel="stylesheet">
-    <link href="css/assets.css" rel="stylesheet">
     <style>
         .hero_single.version_2 {
             background: #222 url(https://zapis.kz/static/img/client_pages/search/categories/category-1.png) center center no-repeat;
